@@ -4,23 +4,27 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  - master  # Indented with two spaces
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-latest  # Indented with two spaces
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'  # Indented with two spaces
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-  
-- task: SnykSecurityScan@1
-  inputs:
-    serviceConnectionEndpoint: 'Snyk_Scan'
-    testType: 'app'
-    monitorWhen: 'always'
-    failOnIssues: true
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'  # Indented with two spaces
+
+  - task: Npm@1
+    inputs:
+      command: 'install'  # Indented with two spaces
+
+  - task: SnykSecurityScan@1
+    inputs:
+      serviceConnectionEndpoint: 'Snyk_Scan'  # Indented with two spaces
+      testType: 'app'
+      monitorWhen: 'always'
+      failOnIssues: true
